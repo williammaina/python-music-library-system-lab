@@ -11,37 +11,32 @@ class Song:
         self.artist = artist
         self.genre = genre
 
-        # Trigger class methods when a new song is created
-        Song.add_song_to_count()
-        Song.add_to_genres(genre)
-        Song.add_to_artists(artist)
-        Song.add_to_genre_count(genre)
-        Song.add_to_artists_count(artist)
+        self.add_song_to_count()
+        self.add_to_genres()
+        self.add_to_artists()
+        self.add_to_genre_count()
+        self.add_to_artists_count()
 
     @classmethod
     def add_song_to_count(cls):
         cls.count += 1
 
-    @classmethod
-    def add_to_genres(cls, genre):
-        if genre not in cls.genres:
-            cls.genres.append(genre)
+    def add_to_genres(self):
+        if self.genre not in Song.genres:
+            Song.genres.append(self.genre)
 
-    @classmethod
-    def add_to_artists(cls, artist):
-        if artist not in cls.artists:
-            cls.artists.append(artist)
+    def add_to_artists(self):
+        if self.artist not in Song.artists:
+            Song.artists.append(self.artist)
 
-    @classmethod
-    def add_to_genre_count(cls, genre):
-        if genre in cls.genre_count:
-            cls.genre_count[genre] += 1
+    def add_to_genre_count(self):
+        if self.genre not in Song.genre_count:
+            Song.genre_count[self.genre] = 1
         else:
-            cls.genre_count[genre] = 1
+            Song.genre_count[self.genre] += 1
 
-    @classmethod
-    def add_to_artists_count(cls, artist):
-        if artist in cls.artists_count:
-            cls.artists_count[artist] += 1
+    def add_to_artists_count(self):
+        if self.artist not in Song.artists_count:
+            Song.artists_count[self.artist] = 1
         else:
-            cls.artists_count[artist] = 1
+            Song.artists_count[self.artist] += 1
